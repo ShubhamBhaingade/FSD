@@ -1,0 +1,17 @@
+<div class="main">
+    <div id="mainbar" class="text-center">
+        <h3 >Author Dashboard</h3>
+    </div>
+    <div id="side">
+        <div class="side1">
+            <h3 (click)="goToDashBoard()">Library Dashboard</h3>
+            <h3 (click)="getToAuthorLoginPage()">Add Author</h3>
+            <h3 (click)="goToAllAuthors()">All Authors</h3>
+            <h3  (click)="goToAllBooks()">Book By AuthorName</h3>
+        </div>
+        <div id="side2">
+           <div *ngIf="isAddAuthor"> <app-add-author ></app-add-author></div>
+           <div *ngIf="authors"><app-list-all-author></app-list-all-author></div>
+        </div>
+    </div>
+</div>

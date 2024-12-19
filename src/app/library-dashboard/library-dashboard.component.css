@@ -1,0 +1,48 @@
+#side{
+    display: flex;
+    
+}
+#side1{
+    width: 25%;
+    height: 100%;
+    background-color:#2C2C2C;
+    padding-top: 3vw;
+    padding-bottom: 15vw;
+    margin-left: .2vw;
+}
+
+#side1>h3{
+    padding: 1vw 1vw;
+    font-size: 1vw;
+    color: white;
+    background-color:#BFB2FF;
+    display: flex;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 30px;
+}
+
+#heading{
+    height: 100px;
+    width: 100%;
+    background-color:#BFB2FF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3vw;
+    border-bottom: 1px solid black;
+   
+}
+
+#heading>h3{
+    background-color:#BFB2FF;
+    color: white;
+    font-size: 3vw;
+    padding-top: 2.1vw;
+}
+
+#side2{
+    width: 75%;
+    height: calc(100% - 100px); 
+    
+}

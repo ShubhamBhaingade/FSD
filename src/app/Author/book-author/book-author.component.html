@@ -1,0 +1,48 @@
+<div id="main">
+  <div id="header">
+    <h3>Journeys Unfold: The World of Books</h3>
+  </div>
+  <div id="down">
+    <label for="authorname" class="form-label text-center"
+      ><h3>Enter Author's Name</h3></label
+    >
+    <input
+      type="text"
+      id="authorname"
+      class="form-control mb-3"
+      placeholder="Author's Name"
+      #auth
+    />
+    <button class="btn btn-success" (click)="getBooks(auth.value)">
+      {{msg}}
+    </button>
+    <div id="booktable" >
+      <table *ngIf="isVisible" class="table table-bordered">
+        <thead>
+          <tr class="table-danger">
+            <th>Book Id</th>
+            <th>Author Id</th>
+            <th>Publisher Id</th>
+            <th>ISBN</th>
+            <th>Bookname</th>
+            <th>Description</th>
+            <th>Category</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let book of allBooks" class="table table-info">
+            <td>{{book.bookId}}</td>
+            <td>{{book.authorId}}</td>
+            <td>{{book.publisherId}}</td>
+            <td>{{book.isbn}}</td>
+            <td>{{book.bookName}}</td>
+            <td>{{book.description}}</td>
+            <td>{{book.category}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+

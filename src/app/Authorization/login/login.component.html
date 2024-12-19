@@ -1,0 +1,63 @@
+
+   
+    <div class="container">
+        <div class="row mt-5">
+        <div class="col-md-6 offset-md-3 card">
+        <div class="container text-center mt-2">
+       
+        </div>
+        <h1 class="text-center">Login</h1>
+        <h5 class="text-center">Login With Valid Credential!!</h5>
+        
+                    <form [formGroup]="loginUser" (ngSubmit)="generateCredential()">
+        <div class="mb-2">
+        <label for="username" class="form-label">User-Name</label>
+        <input name="username" type="text" class="form-control" formControlName="username" id="username">
+        <div class="text-danger" *ngIf="loginUser.controls?.['username']?.touched">
+            <small *ngIf="loginUser.controls?.['username']?.errors?.['required']">This is required</small>
+            <small *ngIf="loginUser.controls?.['username']?.errors?.['pattern']">Only alphabets are allowed.
+              Whitespaces are allowed.
+              Minimum length is 2 characters.
+              Maximum length is 45 characters.</small>
+        </div>
+        </div>
+         
+                        <div class="mb-2">
+        <label for="password" class="form-label">Password*</label>
+        <input name="password" type="password" class="form-control" formControlName="password" id="password">
+        <div class="text-danger" *ngIf="loginUser.controls?.['password']?.touched">
+            <small *ngIf="loginUser.controls?.['password']?.errors?.['required']">This is required</small>
+            <small *ngIf="loginUser.controls?.['password']?.errors?.['pattern']">At least one lowercase letter.
+            At least one uppercase letter.
+            At least one digit.
+            At least one special character
+            a minimum length of 8 characters.</small>
+        </div>
+        </div>
+         
+        <div class="mb-2">
+            <label for="role" class="form-label">Role*</label>
+          
+            <div class="form-check">
+              <input type="radio" class="form-check-input" id="adminRole" name="role" formControlName="role" value="admin">
+              <label class="form-check-label" for="adminRole">Admin</label>
+            </div>
+          
+            <div class="form-check">
+              <input type="radio" class="form-check-input" id="customerRole" name="role" formControlName="role" value="customer">
+              <label class="form-check-label" for="customerRole">Customer</label>
+            </div>
+          </div>
+
+          
+          <div class="container text-center mb-2">
+            <button type="submit" class="btn btn-primary" [disabled]="loginUser.invalid">Login</button>
+            </div>
+    
+          
+        </form>
+         
+                </div>
+        </div>
+   
+

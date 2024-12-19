@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-6 offset-md-3 card">
+      <div class="container text-center mt-2"></div>
+      <h1 class="text-center">Register</h1>
+      <h5 class="text-center">New Member Registration</h5>
+
+      <form [formGroup]="newuser" (ngSubmit)="register()">
+        <div class="mb-2">
+          <label for="name" class="form-label">Name</label>
+          <input
+            name="name"
+            type="text"
+            class="form-control"
+            formControlName="name"
+            id="name"
+          />
+          <div class="text-danger" *ngIf="newuser.controls?.['name']?.touched">
+            <small *ngIf="newuser.controls?.['name']?.errors?.['required']">This is required</small>
+            <small *ngIf="newuser.controls?.['name']?.errors?.['pattern']">Only alphabets are allowed.
+              Whitespaces are allowed.
+              Minimum length is 2 characters.
+              Maximum length is 45 characters.</small>
+        </div>
+        </div>
+
+        <div class="mb-2">
+          <label for="email" class="form-label">Email*</label>
+          <input
+            name="email"
+            type="email"
+            class="form-control"
+            formControlName="email"
+            id="email"
+          />
+          <div class="text-danger" *ngIf="newuser.controls?.['email']?.touched">
+            <small *ngIf="newuser.controls?.['email']?.errors?.['required']">This is required</small>
+            <small *ngIf="newuser.controls?.['email']?.errors?.['email']">Follow A Proper Email Format.</small>
+        </div>
+        </div>
+
+        <div class="mb-2">
+          <label for="password" class="form-label">Password*</label>
+          <input
+            name="password"
+            type="password"
+            class="form-control"
+            formControlName="password"
+            id="password"
+          />
+          <div class="text-danger" *ngIf="newuser.controls?.['password']?.touched">
+            <small *ngIf="newuser.controls?.['password']?.errors?.['required']">This is required</small>
+            <small *ngIf="newuser.controls?.['password']?.errors?.['pattern']">At least one lowercase letter.
+            At least one uppercase letter.
+            At least one digit.
+            At least one special character
+            a minimum length of 8 characters.</small>
+        </div>
+        </div>
+
+        <div class="container text-center mb-2">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="newuser.invalid"
+          >
+            Login
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

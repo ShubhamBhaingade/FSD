@@ -1,0 +1,129 @@
+<h3>All- Authors</h3>
+<div id="main">
+    <button (click)="getAllAvaliableAuthors()" class="btn btn-dark">{{text}}</button>
+    <table class="table table-bordered" *ngIf="isVisible">
+        <thead>
+            <tr class="table-danger">
+                <th>Author ID</th>
+                <th>Author Name</th>
+                <th>Mobile Number</th>
+                <th>Awards Received</th>
+                <th>About</th>
+                <th>Action</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody id="authorBody" class="table-info">
+            <tr *ngFor="let author of authorsArray">
+                <td>{{author.authorId}}</td>
+                <td>{{author.authorName}}</td>
+                <td>{{author.contactNumber}}</td>
+                <td>{{author.awardsReceived}}</td>
+                <td>{{author.about}}</td> 
+                <td><button class="btn btn-warning" (click)="goToEditAuthor(author.authorId)">Edit</button></td>
+                <td><button class="btn btn-danger" (click)="deleteAuthor(author.authorId)">Delete</button></td>
+              </tr>
+        </tbody>
+    </table>
+    <!-- ------------------------------------------------------------------- ---------------------------------------->
+    <div id="update" *ngIf="isEditAuthor">
+      <div class="container">
+        <div class="row mt-5">
+          <div class="col-md-6 offset-md-3 card">
+            <div class="container text-center mt-2"></div>
+            <h1 class="text-center">Register</h1>
+            <h5 class="text-center">New Author Registration</h5>
+      
+            <form [formGroup]="editAuthorForm" (ngSubmit)="editAuthor()">
+              <div class="mb-2">
+                <label for="authorName" class="form-label">Author Name </label>
+                <input
+                  name="authorName"
+                  type="text"
+                  class="form-control"
+                  formControlName="authorName"
+                  id="authorName"
+                />
+                <div class="text-danger" *ngIf="editAuthorForm.controls?.['authorName']?.touched">
+                  <small *ngIf="editAuthorForm.controls?.['authorName']?.errors?.['required']">This is required</small>
+                  <small *ngIf="editAuthorForm.controls?.['authorName']?.errors?.['pattern']">Only alphabets are allowed.
+                    Whitespaces are allowed.
+                    Minimum length is 2 characters.
+                    Maximum length is 45 characters.</small>
+              </div>
+              </div>
+      
+              <div class="mb-2">
+                <label for="contactNumber" class="form-label">Contact Number*</label>
+                <input
+                  name="contactNumber"
+                  type="text"
+                  class="form-control"
+                  formControlName="contactNumber"
+                  id="contactNumber"
+                />
+                <div class="text-danger" *ngIf="editAuthorForm.controls?.['contactNumber']?.touched">
+                  <small *ngIf="editAuthorForm.controls?.['contactNumber']?.errors?.['required']">This is required field</small>
+                  <small *ngIf="editAuthorForm.controls?.['contactNumber']?.errors?.['pattern']">Should start with 6 or 7 or 8 or 9.
+                    Only numerical digits are allowed.
+                    Should contain exactly 10 digits.</small>
+              </div>
+              </div>
+      
+              <div class="mb-2">
+                <label for="awardsReceived" class="form-label">Awards Received</label>
+                <input
+                  name="awardsReceived"
+                  type="text"
+                  class="form-control"
+                  formControlName="awardsReceived"
+                  id="awardsReceived"
+                />
+              </div>
+      
+              <div class="mb-2">
+                <label for="about" class="form-label">About Author*</label>
+                <input
+                  name="about"
+                  type="text"
+                  class="form-control"
+                  formControlName="about"
+                  id="about"
+                />
+                <div class="text-danger" *ngIf="editAuthorForm.controls?.['about']?.touched">
+                  <small *ngIf="editAuthorForm.controls?.['about']?.errors?.['required']">This is required field</small>
+                  <small *ngIf="editAuthorForm.controls?.['about']?.errors?.['pattern']">You Can Mention About Yourself! Minimum 3 Character limit is there. At Max 256 characters you can go.</small>
+                </div>
+              </div>
+      
+              <div class="mb-2">
+                <label for="aadharNumber" class="form-label">Aadhar Number*</label>
+                <input
+                  name="aadharNumber"
+                  type="text"
+                  class="form-control"
+                  formControlName="aadharNumber"
+                  id="aadharNumber"
+                />
+                <div class="text-danger" *ngIf="editAuthorForm.controls?.['aadharNumber']?.touched">
+                  <small *ngIf="editAuthorForm.controls?.['aadharNumber']?.errors?.['required']">This is required field</small>
+                  <small *ngIf="editAuthorForm.controls?.['aadharNumber']?.errors?.['pattern']">Please Provide Valid Aadhar Number
+                  Follow The Format xxxx xxxx xxxx</small>
+                </div>
+              </div>
+      
+              <div class="container text-center mb-2">
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  [disabled]="editAuthorForm.invalid"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+          </div>
